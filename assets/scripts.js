@@ -9,16 +9,27 @@ const roulette = document.querySelector("#roulette");
 roulette.textContent = liste[getRandomInt(liste.length)];
 
 const start = document.querySelector("#start");
+const startLabel = start.querySelector(".start-label");
+const resultCount = document.querySelector("#result-count");
 
 start.addEventListener("click", () => {
   start.disabled = true;
+  startLabel.textContent = "Sélection en cours";
+  roulette.classList.add("is-spinning");
+  resultCount.textContent = "Recherche";
+
   let interval = setInterval(() => {
     roulette.textContent = liste[getRandomInt(liste.length)];
   }, 50);
+
   setTimeout(() => {
-  clearInterval(interval);
-  localStorage.setItem("projectIdeas", JSON.stringify(roulette.textContent));
-  start.disabled = false;
+    clearInterval(interval);
+    localStorage.setItem("projectIdeas", JSON.stringify(roulette.textContent));
+    roulette.classList.remove("is-spinning");
+    startLabel.textContent = "Générer un autre";
+    resultCount.textContent = "Projet sélectionné";
+    start.disabled = false;
+    start.focus();
   }, 2000);
 });
 

@@ -3,18 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101c18">
     <link rel="stylesheet" href="assets/styles.css">
     <title>Project Generator</title>
 </head>
 <body>
-    <h1>Générateur de projets</h1>
-    
-    <p>Fais tourner la roulette et creuse toi la tête !</p>
+    <main class="generator">
+        <header class="generator__header">
+            <div class="brand" aria-label="Project Generator">
+                <span class="brand__mark" aria-hidden="true">PG</span>
+                <span class="brand__name">Project Generator</span>
+            </div>
+            <span class="edition">Édition frontend</span>
+        </header>
 
-    <div id="roulette">
-    </div>
+        <section class="generator__content" aria-labelledby="page-title">
+            <p class="eyebrow"><span></span> Idée du jour</p>
+            <h1 id="page-title">À vous de jouer.</h1>
+            <p class="intro">Faites tourner la roue et trouvez votre prochain défi créatif.</p>
 
-    <button id="start" class="fx-10" type="button"><span class="start-label">Lancer</span></button>
+            <div class="roulette-shell">
+                <div class="roulette-shell__notch" aria-hidden="true"></div>
+                <div id="roulette" role="status" aria-live="polite"></div>
+            </div>
+
+            <button id="start" type="button">
+                <span class="start-label">Générer un projet</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6"/>
+                </svg>
+            </button>
+        </section>
+
+        <footer class="generator__footer">
+            <span>47 défis disponibles</span>
+            <span class="footer-line" aria-hidden="true"></span>
+            <span id="result-count">Prêt</span>
+        </footer>
+    </main>
 
     <script src="assets/scripts.js"></script>
 </body>
